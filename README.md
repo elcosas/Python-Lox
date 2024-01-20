@@ -30,7 +30,7 @@ I plan on adding more as I progress through the book
   [download it here for Windows (64-bit)](https://www.python.org/ftp/python/3.9.2/python-3.9.2-amd64.exe)
   or grab other builds [here](https://www.python.org/downloads/release/python-392/)
 - Download this project's latest release [here](https://github.com/Soup-5/Python-Lox/archive/refs/tags/v1.0.0.zip)
-- Unzip and extract `Downloads/python-loxv1.0.0.zip`
+- Unzip and extract `Downloads/Python-Lox-1.0.0.zip`
 - Open the `Windows PowerShell` app using the **Start** menu
 - Run the script by typing in the following format: `python3 src/main.py *.lox`
 
@@ -47,7 +47,7 @@ python3 src/main.py examples/example.lox
     - You might need to install [Apple's Developer Tools](https://developer.apple.com/xcode/resources/)
       if you haven't already
 - Download this project's latest release [here](https://github.com/Soup-5/Python-Lox/archive/refs/tags/v1.0.0.zip)
-- Unzip and extract `Downloads/python-loxv1.0.0.zip`
+- Unzip and extract `Downloads/Python-Lox-1.0.0.zip`
 - Open the `Terminal` app through **Launchpad**
 - Use `cd` to change to the project's directory
 - Run the script by typing in the following format: `python3 src/main.py *.lox`
@@ -62,7 +62,7 @@ python3 src/main.py examples/example.lox
 - This project assumes you have already installed python 3.9.2, if not you can
   run `sudo apt install python3.9`
 - Download this project's latest release [here](https://github.com/Soup-5/Python-Lox/archive/refs/tags/v1.0.0.zip)
-- Run `unzip Downloads/python-loxv1.0.0.zip`
+- Run `unzip Downloads/Python-Lox-1.0.0.zip`
 - Use `cd` to change to the project's directory
 - Run the script by typing in the following format: `python3 src/main.py *.lox`
 
