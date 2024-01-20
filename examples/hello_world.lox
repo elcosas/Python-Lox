@@ -1,0 +1,8 @@
+/*
+ *  Hello World program for the lox language
+ *  written by Cole Saldanha 1/19/24
+ *  run script:
+ *  $ python3 src/main.py examples/hello_world.lox
+ */
+
+print "Hello, world!";

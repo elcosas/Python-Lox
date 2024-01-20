@@ -1,0 +1,22 @@
+/*
+ *  Example program for the lox language
+ *  written by Cole Saldanha 1/19/24
+ *  run script:
+ *  $ python3 src/main.py examples/example.lox
+ */
+
+// instantiate variables
+var numerator;
+var denominator;
+
+// assign values to variables
+numerator = (3 + 5) * 2;
+denominator = 5 - 2 / 2;
+
+// calculate result
+var result = numerator / denominator;
+
+// print results
+print "((3 + 5) * 2) / (5 - 2 / 2) =";
+print "16 / 4 =";
+print result;
