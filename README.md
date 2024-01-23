@@ -15,6 +15,7 @@ I put "bare bones" because currently the interpreter only supports a few of
 lox's basic features so far:
 - Literals (strings, floats)
 - Basic Arithmetic (+, -, *, /)
+- Boolean Arithmetic & Equality
 - Expressions
 - Statements (only `print` & `var`)
 - Variable Declaration

@@ -27,6 +27,8 @@ class Interpreter(Visitor):
         if expr.operator.type == TokenType.MINUS:
             self.check_operands(right)
             return -float(right)
+        if expr.operator.type == TokenType.BANG:
+            return not self.is_truthy(right)
         return None
 
     def visit_variable_expr(self, expr: Variable) -> object:
@@ -40,9 +42,25 @@ class Interpreter(Visitor):
     def visit_binary_expr(self, expr: Binary) -> object:
         left: object = expr.left.accept(self)
         right: object = expr.right.accept(self)
+        if expr.operator.type == TokenType.GREATER:
+            self.check_operands(expr.operator, left, right)
+            return float(left) > float(right)
+        if expr.operator.type == TokenType.GREATER_EQUAL:
+            self.check_operands(expr.operator, left, right)
+            return float(left) >= float(right)
+        if expr.operator.type == TokenType.LESS:
+            self.check_operands(expr.operator, left, right)
+            return float(left) < float(right)
+        if expr.operator.type == TokenType.LESS_EQUAL:
+            self.check_operands(expr.operator, left, right)
+            return float(left) <= float(right)
         if expr.operator.type == TokenType.MINUS:
             self.check_operands(expr.operator, left, right)
             return float(left) - float(right)
+        if expr.operator.type == TokenType.BANG_EQUAL:
+            return not self.is_equal(left, right)
+        if expr.operator.type == TokenType.EQUAL_EQUAL:
+            return self.is_equal(left, right)
         if expr.operator.type == TokenType.SLASH:
             self.check_operands(expr.operator, left, right)
             if float(right) == 0.0:
@@ -73,6 +91,20 @@ class Interpreter(Visitor):
         self.environ.define(stmt.name.lexeme, value)
 
     # Utilities
+    def is_truthy(self, obj: object) -> bool:
+        if obj is None:
+            return False
+        if isinstance(obj, bool):
+            return bool(obj)
+        return True
+
+    def is_equal(self, a: object, b: object) -> bool:
+        if a is None and b is None:
+            return True
+        if a is None:
+            return False
+        return a == b
+
     def check_operands(self, operator: Token, *operands: list[object]) -> None:
         for operand in operands:
             if not isinstance(operand, float):

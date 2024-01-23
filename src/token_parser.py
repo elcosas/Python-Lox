@@ -7,6 +7,17 @@ from error import ParseErr
 class Parser:
     cur: int = 0
 
+    synch_toks = [
+        TokenType.CLASS,
+        TokenType.FUN,
+        TokenType.VAR,
+        TokenType.FOR,
+        TokenType.IF,
+        TokenType.WHILE,
+        TokenType.PRINT,
+        TokenType.RETURN
+    ]
+
     def __init__(self, tokens: list[Token]) -> None:
         self.tokens: list[Token] = tokens
     
@@ -53,7 +64,7 @@ class Parser:
         return self.assignment()
 
     def assignment(self) -> Expr:
-        expr: Expr = self.term()
+        expr: Expr = self.equality()
         if self.match(TokenType.EQUAl):
             equals: Token = self.previous()
             value: Expr = self.assignment()
@@ -61,6 +72,22 @@ class Parser:
                 name: Token = expr.name
                 return Assign(name, value)
             raise ParseErr(equals, 'Invalid assignment target.')
+        return expr
+
+    def equality(self) -> Expr:
+        expr: Expr = self.comparison()
+        while self.match(TokenType.BANG_EQUAL, TokenType.EQUAL_EQUAL):
+            oper: Token = self.previous()
+            right: Expr = self.factor()
+            expr = Binary(expr, oper, right)
+        return expr
+    
+    def comparison(self) -> Expr:
+        expr: Expr = self.term()
+        while self.match(TokenType.GREATER, TokenType.GREATER_EQUAL, TokenType.LESS, TokenType.LESS_EQUAL):
+            oper: Token = self.previous()
+            right: Expr = self.factor()
+            expr = Binary(expr, oper, right)
         return expr
     
     def term(self) -> Expr:
@@ -80,13 +107,19 @@ class Parser:
         return expr
     
     def unary(self) -> Expr:
-        if self.match(TokenType.MINUS):
+        if self.match(TokenType.BANG, TokenType.MINUS):
             oper: Token = self.previous()
             right: Expr = self.unary()
             return Unary(oper, right)
         return self.primary()
     
     def primary(self) -> Expr:
+        if self.match(TokenType.FALSE):
+            return Literal(False)
+        if self.match(TokenType.TRUE):
+            return Literal(True)
+        if self.match(TokenType.NIL):
+            return Literal(None)
         if self.match(TokenType.NUMBER, TokenType.STRING):
             return Literal(self.previous().literal)
         if self.match(TokenType.IDENTIFIER):
@@ -115,7 +148,7 @@ class Parser:
         self.advance()
         while not self.tok_end():
             ttype: TokenType = self.peek().type
-            if ttype == TokenType.PRINT or ttype == TokenType.VAR:
+            if ttype in self.synch_toks:
                 return
             self.advance()
     

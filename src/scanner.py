@@ -4,8 +4,22 @@ from error import error
 
 class Scanner:
     keywords: dict[str, TokenType] = {
+        'and': TokenType.AND,
+        'class': TokenType.CLASS,
+        'else': TokenType.ELSE,
+        'false': TokenType.FALSE,
+        'for': TokenType.FOR,
+        'fun': TokenType.FUN,
+        'if': TokenType.IF,
+        'nil': TokenType.NIL,
+        'or': TokenType.OR,
+        'print': TokenType.PRINT,
+        'return': TokenType.RETURN,
+        'super': TokenType.SUPER,
+        'this': TokenType.THIS,
+        'true': TokenType.TRUE,
         'var': TokenType.VAR,
-        'print': TokenType.PRINT
+        'while': TokenType.WHILE
     }
 
     def __init__(self, source: str) -> None:
@@ -31,8 +45,14 @@ class Scanner:
             self.add_token(TokenType.LEFT_PAREN)
         elif char == ')':
             self.add_token(TokenType.RIGHT_PAREN)
-        elif char == '=':
-            self.add_token(TokenType.EQUAl)
+        elif char == '{':
+            self.add_token(TokenType.LEFT_BRACE)
+        elif char == '}':
+            self.add_token(TokenType.RIGHT_BRACE)
+        elif char == ',':
+            self.add_token(TokenType.COMMA)
+        elif char == '.':
+            self.add_token(TokenType.DOT)
         elif char == '-':
             self.add_token(TokenType.MINUS)
         elif char == '+':
@@ -41,6 +61,14 @@ class Scanner:
             self.add_token(TokenType.SEMICOlON)
         elif char == '*':
             self.add_token(TokenType.STAR)
+        elif char == '!':
+            self.add_token(TokenType.BANG_EQUAL if self.char_match('=') else TokenType.BANG)
+        elif char == '=':
+            self.add_token(TokenType.EQUAL_EQUAL if self.char_match('=') else TokenType.EQUAL)
+        elif char == '<':
+            self.add_token(TokenType.LESS_EQUAL if self.char_match('=') else TokenType.LESS)
+        elif char == '>':
+            self.add_token(TokenType.GREATER_EQUAL if self.char_match('=') else TokenType.GREATER)
         elif char == '/':
             if self.char_match('/'):
                 while self.peek() != '\n' and not self.current >= len(self.source):
