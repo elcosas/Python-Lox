@@ -40,9 +40,9 @@ class Parser:
     def var_declaration(self) -> Stmt:
         name: Token = self.consume(TokenType.IDENTIFIER, 'Expected variable name.')
         initializer: Expr = None
-        if self.match(TokenType.EQUAl):
+        if self.match(TokenType.EQUAL):
             initializer = self.expression()
-        self.consume(TokenType.SEMICOlON, 'Expected \';\' after variable declaration.')
+        self.consume(TokenType.SEMICOLON, 'Expected \';\' after variable declaration.')
         return Var(name, initializer)
 
     def statement(self) -> Stmt:
@@ -52,12 +52,12 @@ class Parser:
 
     def print_statement(self) -> Stmt:
         value: Expr = self.expression()
-        self.consume(TokenType.SEMICOlON, 'Expected \';\' after value.')
+        self.consume(TokenType.SEMICOLON, 'Expected \';\' after value.')
         return Print(value)
     
     def expression_statement(self) -> Stmt:
         expr: Expr = self.expression()
-        self.consume(TokenType.SEMICOlON, 'Expected \';\' after expression.')
+        self.consume(TokenType.SEMICOLON, 'Expected \';\' after expression.')
         return Expression(expr)
 
     def expression(self) -> Expr:
@@ -65,7 +65,7 @@ class Parser:
 
     def assignment(self) -> Expr:
         expr: Expr = self.equality()
-        if self.match(TokenType.EQUAl):
+        if self.match(TokenType.EQUAL):
             equals: Token = self.previous()
             value: Expr = self.assignment()
             if isinstance(expr, Variable):

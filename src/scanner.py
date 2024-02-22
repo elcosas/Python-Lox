@@ -58,7 +58,7 @@ class Scanner:
         elif char == '+':
             self.add_token(TokenType.PLUS)
         elif char == ';':
-            self.add_token(TokenType.SEMICOlON)
+            self.add_token(TokenType.SEMICOLON)
         elif char == '*':
             self.add_token(TokenType.STAR)
         elif char == '!':
