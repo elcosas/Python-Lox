@@ -1,0 +1,11 @@
+var i = 0;
+if (i == 0) {
+    print "hello";
+}
+else {
+    print "wtf?";
+}
+while (i < 10) {
+    print i;
+    i = i + 1;
+}
