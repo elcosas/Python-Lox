@@ -80,6 +80,10 @@ class Interpreter(Visitor):
         if expr.operator.type == TokenType.STAR:
             self.check_operands(expr.operator, left, right)
             return float(left) * float(right)
+        if expr.operator.type == TokenType.MODULO:
+            if isinstance(left, float) and isinstance(right, float):
+                return float(left) % float(right)
+            raise RuntimeErr(expr.operator, 'Modulo operator must take two numbers as arguments')
         if expr.operator.type == TokenType.PLUS:
             if isinstance(left, float) and isinstance(right, float):
                 return float(left) + float(right)

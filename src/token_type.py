@@ -13,37 +13,38 @@ class TokenType(Enum):
     SEMICOLON = 9
     SLASH = 10
     STAR = 11
+    MODULO = 12
 
     # 1-2 char tokens
-    BANG = 12
-    BANG_EQUAL = 13
-    EQUAL = 14
-    EQUAL_EQUAL = 15
-    GREATER = 16
-    GREATER_EQUAL = 17
-    LESS = 18
-    LESS_EQUAL = 19
+    BANG = 13
+    BANG_EQUAL = 14
+    EQUAL = 15
+    EQUAL_EQUAL = 16
+    GREATER = 17
+    GREATER_EQUAL = 18
+    LESS = 19
+    LESS_EQUAL = 20
     
     # literals
-    IDENTIFIER = 20
-    STRING = 21
-    NUMBER = 22
+    IDENTIFIER = 21
+    STRING = 22
+    NUMBER = 23
 
     # Keywords
-    AND = 23
-    CLASS = 24
-    ELSE = 25
-    FALSE = 26
-    FUN = 27
-    FOR = 28
-    IF = 29
-    NIL = 30
-    OR = 31
-    PRINT = 32
-    RETURN = 33
-    SUPER = 34
-    THIS = 35
-    TRUE = 36
-    VAR = 37
-    WHILE = 38
-    EOF = 39
+    AND = 24
+    CLASS = 25
+    ELSE = 26
+    FALSE = 27
+    FUN = 28
+    FOR = 29
+    IF = 30
+    NIL = 31
+    OR = 32
+    PRINT = 33
+    RETURN = 34
+    SUPER = 35
+    THIS = 36
+    TRUE = 37
+    VAR = 38
+    WHILE = 39
+    EOF = 40

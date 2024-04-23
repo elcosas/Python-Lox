@@ -57,6 +57,8 @@ class Scanner:
             self.add_token(TokenType.MINUS)
         elif char == '+':
             self.add_token(TokenType.PLUS)
+        elif char == '%':
+            self.add_token(TokenType.MODULO)
         elif char == ';':
             self.add_token(TokenType.SEMICOLON)
         elif char == '*':

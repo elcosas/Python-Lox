@@ -21,6 +21,9 @@ lox's basic features so far:
 - Variable Declaration
 - Variable Assignment
 - Comments (single & multi-line)
+- Block Statements & Scope
+- If/Else Statements
+- While Loops\
 I plan on adding more as I progress through the book
 
 ## Installation

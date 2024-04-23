@@ -1,0 +1,17 @@
+var i = 1;
+while (i <= 20) {
+    var phrase = "";
+    if (i % 3 == 0) {
+        phrase = phrase + "fizz";
+    }
+    if (i % 5 == 0) {
+        phrase = phrase + "buzz";
+    }
+    if (phrase != "") {
+        print phrase;
+    }
+    else {
+        print i;
+    }
+    i = i + 1;
+}

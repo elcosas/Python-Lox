@@ -41,7 +41,7 @@ def run_prompt() -> None:
     exit(0)
 
 def version_info() -> str:
-    return 'Welcome to python-lox 1.0.2!'
+    return 'Welcome to python-lox 1.3.0!'
 
 def run(source: str) -> None:
     scanner: Scanner = Scanner(source)
