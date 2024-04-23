@@ -38,9 +38,9 @@ I plan on adding more as I progress through the book
 - Open the `Windows PowerShell` app using the **Start** menu
 - Run the script by typing in the following format: `python3 src/main.py *.lox`
 
-For example, if you want to run the `example.lox` script you can type in the following command:
+For example, if you want to run the `fizzbuzz.lox` script you can type in the following command:
 ```bash
-python3 src/main.py examples/example.lox
+python3 src/main.py examples/fizzbuzz.lox
 ```
 
 ### Macbook:
@@ -56,9 +56,9 @@ python3 src/main.py examples/example.lox
 - Use `cd` to change to the project's directory
 - Run the script by typing in the following format: `python3 src/main.py *.lox`
 
-For example, if you want to run the `example.lox` script you can type in the following command:
+For example, if you want to run the `fizzbuzz.lox` script you can type in the following command:
 ```bash
-python3 src/main.py examples/example.lox
+python3 src/main.py examples/fizzbuzz.lox
 ```
 
 ### Debian/Ubuntu:
@@ -70,9 +70,9 @@ python3 src/main.py examples/example.lox
 - Use `cd` to change to the project's directory
 - Run the script by typing in the following format: `python3 src/main.py *.lox`
 
-For example, if you want to run the `example.lox` script you can type in the following command:
+For example, if you want to run the `fizzbuzz.lox` script you can type in the following command:
 ```bash
-python3 src/main.py examples/example.lox
+python3 src/main.py examples/fizzbuzz.lox
 ```
 
 ## License & Attributions
